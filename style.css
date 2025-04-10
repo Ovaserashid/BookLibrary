@@ -3,7 +3,6 @@
     background: rgb(30, 17, 43);
  }
  .header{
-    /* create background linear gradient towards center from rgb(30, 17, 43) to white. so background should be rgb(30, 17, 43) on left and right then fade to white in middle*/
     background: linear-gradient(to right, rgb(30, 17, 43), white 50%, rgb(30, 17, 43));
     color: white;
     text-align: center;
@@ -12,20 +11,17 @@
     min-width: 320px;
     text-shadow: rgb(30, 17, 43) 5px 5px 10px;
     font-size: 110%;
- }
+}
 .container{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
-
-
 .card-holder {
     flex-grow: 1;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 250px));
-    /*gap: 20px doesn't separate the cards, the cards are overlapping, fix it*/
-    gap: 20px;
+    gap: 40px;
     justify-content: center;
     margin-top: 20px;
     padding: 20px;
@@ -46,7 +42,7 @@
 form{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     min-width: 340px;
     flex-grow: 1;
@@ -57,12 +53,19 @@ form{
 .form-group{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
     gap: 16px;
+    border: 1px solid rgb(185, 182, 182);
+    padding: 10px;
+    border-radius: 16px;
 }
 .form-group > div{
     display: flex;
     justify-content: space-between;
     gap: 4px;
+    background-color: rgba(0, 0, 0, 0.2);
+
 }
 #checkbox-container{
     display: flex;
@@ -71,14 +74,96 @@ form{
     margin: 5px 0;
 }
 .card-holder .card{
-    background-color: #fff;
+    position: relative;
+    background-color: rgb(30 17 43);
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
     width: 200px;
     height: 200px;
-    opacity: 0.9;
+    color: rgb(185, 182, 182);
+    font-family: 'Courier New', Courier, monospace;
+}
+.card:hover {
+    color: rgb(36, 36, 36);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    font-weight: bolder;
+}
+.card::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left, #2d41f5, #f0f0f0);
+    filter: blur(2px);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 5px;
+}
+.card:hover::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left,#2d41f5, #f0f0f0);
+    filter: blur(16px);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 5px;
+}
+.remove-book{
+    position: relative;
+    background-color: #202131;
+    color: rgb(185, 182, 182);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 24px; 
+    font-weight: bold;  
+    font-family: 'Courier New', Courier, monospace;
+    margin: 10px 0;
+}
+.remove-book:hover {
+    color: rgb(49, 48, 48);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+.remove-book::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left, #ff0000, #ffffff);
+    filter: blur(2px);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 5px;
+}
+.remove-book:hover::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #ff0000, #ffffff);
+    filter: blur(16px);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 5px;
 }
 #add-book{
     position: relative;
@@ -103,7 +188,7 @@ form{
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to left, #ff0000, #ffffff);
+    background: linear-gradient(to left, #046d00, #ffffff);
     filter: blur(2px);
     top: 50%;
     left: 50%;
@@ -117,7 +202,7 @@ form{
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, #ff0000, #ffffff);
+    background: linear-gradient(to right, #046d00, #ffffff);
     filter: blur(16px);
     top: 50%;
     left: 50%;
