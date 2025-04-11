@@ -27,19 +27,48 @@ function updateCardContainer() {
             <h2>${book.title}</h2>
             <p>Author: ${book.author}</p>
             <p>Pages: ${book.pages}</p>
-            <p>Read: ${book.read ? "Yes" : "No"}</p>
+            <p class="toggle-read" card-index="${index}"></p>
             </div>
             <br>
-            <button class="remove-book" data-index="${index}">Remove Book</button>
+            <button class="remove-book" data-index="${index}">Remove</button>
         `;
+        const readStatus = card.querySelector(".toggle-read");
+        if (book.read) {
+            readStatus.textContent = "Read";
+            card.classList.add("read");
+        } else {
+            readStatus.textContent = "Not Read";
+            card.classList.add("not-read");
+        }
         cardContainer.appendChild(card); 
     });
     const removeBookButton = document.querySelectorAll(".remove-book");
     removeBookButton.forEach((button) => {
         button.addEventListener("click", function (e) {
+            e.stopPropagation();
             const bookIndex = e.target.getAttribute("data-index");
             bookLibrary.splice(bookIndex, 1); // Remove the book from the library
             updateCardContainer();
+        });
+    });
+
+    const card = document.querySelectorAll(".card");
+    card.forEach((card) => {
+        card.addEventListener("click", function (e) {
+            const cardIndex = e.currentTarget.querySelector(".toggle-read").getAttribute("card-index");
+            const readStatus = card.querySelector(".toggle-read");
+            if (readStatus.textContent === "Read") {
+                readStatus.textContent = "Not Read";
+                card.classList.remove("read");
+                card.classList.add("not-read");
+                bookLibrary[cardIndex].read = false; // Update the book's read status
+            } else {
+                readStatus.textContent = "Read";
+                card.classList.remove("not-read");
+                card.classList.add("read");
+                bookLibrary[cardIndex].read = true; // Update the book's read status
+            }
+            
         });
     });
 }
