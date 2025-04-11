@@ -17,14 +17,16 @@ function updateCardContainer() {
         const card = document.createElement("div");
         card.classList.add("card");
         card.innerHTML = `
+            <div class="cardBox">
             <h2>${book.title}</h2>
             <p>Author: ${book.author}</p>
             <p>Pages: ${book.pages}</p>
             <p>Read: ${book.read ? "Yes" : "No"}</p>
-            <button class="remove-book" data-index="${index}">Remove</button>
+            </div>
+            <br>
+            <button class="remove-book" data-index="${index}">Remove Book</button>
         `;
-        cardContainer.appendChild(card);
-
+        cardContainer.appendChild(card); 
     });
     const removeBookButton = document.querySelectorAll(".remove-book");
     removeBookButton.forEach((button) => {
