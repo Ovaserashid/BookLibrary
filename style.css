@@ -16,20 +16,21 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    padding: 20px;
 }
 .card-holder {
-    flex-grow: 1;
+    flex-grow: 3;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 350px));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 250px));
     gap: 40px;
     justify-content: center;
-    margin-top: 20px;
-    padding: 20px;
+    justify-items: center;
     background-color: rgba(146, 146, 146, 0.2);
     border-radius: 10px;
-    width: 600px;
-    height: 600px;
+    width: fit-content;
+    height: 370px;
     overflow: auto;
+    padding: 30px 10px;
 }
 .button-container {
     display: flex;
@@ -77,12 +78,12 @@ form{
     position: relative;
     background-color: rgb(30 17 43);
     border-radius: 10px;
-    padding: 20px;
     text-align: center;
-    width: 250px;
-    height: 330px;
+    width: 220px;
+    height: 270px;
     color: rgb(185, 182, 182);
     font-family: 'Courier New', Courier, monospace;
+    padding-bottom: 20px;
 }
 .card:hover {
     color: rgb(36, 36, 36);
