@@ -1,7 +1,6 @@
 let bookLibrary = [];
 
 const addBookButton = document.querySelector("#add-book");
-
 const cardContainer = document.querySelector(".card-holder");
 
 function Book(title, author, pages, read) {
@@ -9,6 +8,13 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+}
+
+function clearformfield() {
+    document.querySelector("#book-title").value = "";
+    document.querySelector("#book-author").value = "";
+    document.querySelector("#pagenumber").value = "";
+    document.querySelector("#read").checked = false;
 }
 
 function updateCardContainer() {
@@ -39,13 +45,20 @@ function updateCardContainer() {
 }
 
 addBookButton.addEventListener("click", function (e) {
-    e.preventDefault(); // Prevent form submission
-    const book = new Book(
-        document.querySelector("#book-title").value,
-        document.querySelector("#book-author").value,
-        document.querySelector("#pagenumber").value,
-        document.querySelector("#read").checked
-    );
-    bookLibrary.push(book);
-    updateCardContainer();
+    // Prevent form submission
+    if(e.target.form.checkValidity()){
+        const book = new Book(
+            document.querySelector("#book-title").value,
+            document.querySelector("#book-author").value,
+            document.querySelector("#pagenumber").value,
+            document.querySelector("#read").checked
+        );
+        bookLibrary.push(book);
+        updateCardContainer();
+        e.target.form.reset();
+        e.preventDefault(); 
+    }else{
+        e.target.form.reportValidity();
+    }
+    
 });
