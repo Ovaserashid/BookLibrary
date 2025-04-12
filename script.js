@@ -23,8 +23,8 @@ function updateCardContainer() {
         const card = document.createElement("div");
         card.classList.add("card");
         card.innerHTML = `
-            <div class="cardBox">
             <div id="read-container"><p id="read-status" class="toggle-read" card-index="${index}"></p></div>
+            <div class="cardBox">
             <h2>${book.title}</h2>
             <p style="font-size: large"><b style="font-weght: 900;">Author:</b> ${book.author}</p>
             <p style="font-size: large"><b style="font-weght: 900;">Pages:</b> ${book.pages}</p>
