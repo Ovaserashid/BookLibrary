@@ -24,12 +24,11 @@ function updateCardContainer() {
         card.classList.add("card");
         card.innerHTML = `
             <div class="cardBox">
+            <div id="read-container"><p id="read-status" class="toggle-read" card-index="${index}"></p></div>
             <h2>${book.title}</h2>
-            <p>Author: ${book.author}</p>
-            <p>Pages: ${book.pages}</p>
-            <p class="toggle-read" card-index="${index}"></p>
+            <p style="font-size: large"><b style="font-weght: 900;">Author:</b> ${book.author}</p>
+            <p style="font-size: large"><b style="font-weght: 900;">Pages:</b> ${book.pages}</p>
             </div>
-            <br>
             <button class="remove-book" data-index="${index}">Remove</button>
         `;
         const readStatus = card.querySelector(".toggle-read");
